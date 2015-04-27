@@ -12,7 +12,7 @@
     "bin"
   ],
   "bin": {
-    "argyle": "./bin/arglye.js"
+    "argyle": "./bin/argyle.js"
   },
   "keywords": [
     "image",
@@ -28,6 +28,7 @@
   ],
   "dependencies": {
     "chalk": "^1.0.0",
+    "gm": "^1.17.0",
     "kue": "^0.8.12",
     "minimist": "^1.1.1"
   }
