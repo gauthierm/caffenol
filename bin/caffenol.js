@@ -8,7 +8,7 @@ var kue = require('kue');
 var cliPackage = require('../package');
 var util = require('../lib/util');
 
-var debugFlag = argv.d || argv.debug;
+util.showDebug = argv.d || argv.debug;
 var versionFlag = argv.v || argv.version;
 var port = argv.port || 3000;
 var helpFlag = argv.h || argv.help;
@@ -65,7 +65,7 @@ queue.on('error', function(err) {
   } else {
     util.error(chalk.red(err.message));
   }
-})
+});
 
 queue.process('process-photo', concurrentJobs, function(job, done) {
   util.debug('Got a job!');
