@@ -47,7 +47,7 @@ var queue = kue.createQueue();
  */
 var concurrentJobs = 4;
 
-process.once('SIGINT', function(sig) {
+process.once('SIGINT', function() {
   if (queue.client.connected) {
     queue.shutdown(5000, function(err) {
       if (err) {
