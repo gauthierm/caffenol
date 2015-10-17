@@ -39,11 +39,17 @@ if (helpFlag) {
 }
 
 var queue = kue.createQueue();
+
+/**
+ * Maximum number of jobs that will be dequeued from Redis in a single
+ * operation. Jobs are not processed concurrently because node.js is single-
+ * threaded.
+ */
 var concurrentJobs = 4;
 
 process.once('SIGINT', function(sig) {
   if (queue.client.connected) {
-    queue.shutdown(function(err) {
+    queue.shutdown(5000, function(err) {
       if (err) {
         util.error('Shutdown with error', err);
         process.exit(1);
@@ -51,7 +57,7 @@ process.once('SIGINT', function(sig) {
         util.log('Good bye!');
         process.exit(0);
       }
-    }, 5000);
+    });
   } else {
     util.log('Good bye!');
     process.exit(0);

@@ -29,7 +29,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "gm": "^1.17.0",
-    "kue": "^0.8.12",
+    "kue": "^0.9.6",
     "minimist": "^1.1.1"
   },
   "devDependencies": {
